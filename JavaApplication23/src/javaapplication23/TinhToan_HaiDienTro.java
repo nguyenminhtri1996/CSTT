@@ -79,7 +79,7 @@ public class TinhToan_HaiDienTro {
         }
     }
   
-    public String In_CongThuc(Vector giathiet, Vector giatri, String tc)
+    public String In_CongThuc(Vector giathiet, String tc)
     {
         String baigiai = "";
         for(int i = 0; i < giathiet.size(); i++)
@@ -94,40 +94,40 @@ public class TinhToan_HaiDienTro {
                             I = I1;
                         else
                             I = I2;
-                        baigiai += "=> Tìm được: "+I+"\n";
+                        baigiai += "=> Tìm được: "+I+" (A)\n";
                         break;
                     }
                     else
                     {
                         baigiai += "Áp dụng công thức: I = I1 + I2\n";
                         I = I1 + I2;
-                        baigiai += "=> Tìm được: "+I+"\n";
+                        baigiai += "=> Tìm được: "+I+" (A)\n";
                         break;
                     }
                 case "H002":
                     baigiai += "Áp dụng công thức: I = U/R";
                     I = U/R;
-                    baigiai += "=> Tìm được: "+I+"\n";
+                    baigiai += "=> Tìm được: "+I+" (A)\n";
                     break;
                 case "H003":
                     baigiai += "Áp dụng công thức: I = A/(U.t)\n";
                     I = A/(U*t);
-                    System.out.println("=> Tìm được: "+I+"\n");
+                    System.out.println("=> Tìm được: "+I+" (A)\n");
                     break;
                 case "H004":
                     baigiai += "Áp dụng công thức: I = P/U\n";
                     I = P/U;
-                    System.out.println("=> Tìm được: "+I+"\n");
+                    System.out.println("=> Tìm được: "+I+" (A)\n");
                     break;
                 case "H005":
                     baigiai += "Áp dụng công thức: I = q/t\n";
                     I = q/t;
-                    baigiai += "=> Tìm được: "+I+"\n";
+                    baigiai += "=> Tìm được: "+I+" (A)\n";
                     break;
                 case "H006":
                     baigiai += "Áp dụng công thức: I1 = U1/R1\n";
                     I = U1/R1;
-                    baigiai += "=> Tìm được: "+I1+"\n";
+                    baigiai += "=> Tìm được: "+I1+" (A)\n";
                     break;
                 case "H007":
                     if(tc.equals("noitiep"))
@@ -137,20 +137,20 @@ public class TinhToan_HaiDienTro {
                             I1 = I;
                         else
                             I1 = I2;
-                        baigiai += "=> Tìm được: "+I1+"\n";
+                        baigiai += "=> Tìm được: "+I1+" (A)\n";
                         break;
                     }
                     else
                     {
                         baigiai += "Áp dụng công thức: I1 = I - I2\n";
                         I1 = I - I2;
-                        baigiai += "=> Tìm được: "+I1+"\n";
+                        baigiai += "=> Tìm được: "+I1+" (A)\n";
                         break;
                     }
                 case "H008":
                     baigiai += "Áp dụng công thức: I2 = U2/R2\n";
                     I2 = U2/R2;
-                    baigiai += "=> Tìm được: "+I2+"\n";
+                    baigiai += "=> Tìm được: "+I2+" (A)\n";
                     break;
                 case "H009":
                     if(tc.equals("noitiep"))
@@ -160,14 +160,14 @@ public class TinhToan_HaiDienTro {
                             I2 = I;
                         else
                             I2 = I1;
-                        baigiai += "=> Tìm được: "+I1+"\n";
+                        baigiai += "=> Tìm được: "+I1+" (A)\n";
                         break;
                     }
                     else
                     {
                         baigiai += "Áp dụng công thức: I2 = I - I1\n";
                         I2 = I - I1;
-                        baigiai += "=> Tìm được: "+I2+"\n";
+                        baigiai += "=> Tìm được: "+I2+" (A)\n";
                         break;
                     }
                 case "H010":
@@ -175,7 +175,7 @@ public class TinhToan_HaiDienTro {
                     {
                         baigiai += "Áp dụng công thức: U = U1+U2\n";
                         U = U1+U2;
-                        baigiai += "=> Tìm được: "+U+"\n";
+                        baigiai += "=> Tìm được: "+U+" (V)\n";
                         break;
                     }
                     else
@@ -185,40 +185,40 @@ public class TinhToan_HaiDienTro {
                             U = U1;
                         else
                             U = U2;
-                        baigiai += "=> Tìm được: "+U+"\n";
+                        baigiai += "=> Tìm được: "+U+" (V)\n";
                         break;
                     }
                 case "H011":
                     baigiai += "U = I.R\n";
                     U = I*R;
-                    baigiai += "=> Tìm được: "+U+"\n";
+                    baigiai += "=> Tìm được: "+U+" (V)\n";
                     break;
                 case "H012":
                     baigiai += "U = P/I\n";
                     U = P/I;
-                    baigiai += "=> Tìm được: "+U+"\n";
+                    baigiai += "=> Tìm được: "+U+" (V)\n";
                     break;
                 case "H013":
                     baigiai += "U = A/(I.t)\n";
                     U = A/(I*t);
-                    baigiai += "=> Tìm được: "+U+"\n";
+                    baigiai += "=> Tìm được: "+U+" (V)\n";
                     break;
                 case "H014":
                     baigiai += "U = A/q";
                     U = A/q;
-                    baigiai += "=> Tìm được: "+U+"\n";
+                    baigiai += "=> Tìm được: "+U+" (V)\n";
                     break;
                 case "H015":
                     baigiai += "U1 = I1*R1";
                     U1 = I1*R1;
-                    baigiai += "=> Tìm được: "+U+"\n";
+                    baigiai += "=> Tìm được: "+U+" (V)\n";
                     break;
                 case "H016":
                     if(tc.equals("noitiep"))
                     {
                         baigiai += "Áp dụng công thức: U1 = U - U2\n";
                         U1 = U-U2;
-                        baigiai += "=> Tìm được: "+U1+"\n";
+                        baigiai += "=> Tìm được: "+U1+" (V)\n";
                         break;
                     }
                     else
@@ -228,20 +228,20 @@ public class TinhToan_HaiDienTro {
                             U1 = U;
                         else
                             U1 = U2;
-                        baigiai += "=> Tìm được: "+U1+"\n";
+                        baigiai += "=> Tìm được: "+U1+" (V)\n";
                         break;
                     }
                 case "H017":
                     baigiai += "U2 = I2*R2";
                     U2 = I2*R2;
-                    baigiai += "=> Tìm được: "+U2+"\n";
+                    baigiai += "=> Tìm được: "+U2+" (V)\n";
                     break;
                 case "H018":
                     if(tc.equals("noitiep"))
                     {
                         baigiai += "Áp dụng công thức: U2 = U - U1\n";
                         U2 = U-U1;
-                        baigiai += "=> Tìm được: "+U2+"\n";
+                        baigiai += "=> Tìm được: "+U2+" (V)\n";
                         break;
                     }
                     else
@@ -251,148 +251,148 @@ public class TinhToan_HaiDienTro {
                             U2 = U;
                         else
                             U2 = U1;
-                        baigiai += "=> Tìm được: "+U2+"\n";
+                        baigiai += "=> Tìm được: "+U2+" (V)\n";
                         break;
                     }
                 case "H019":
                     baigiai += "R = U*I";
                     R = U*I;
-                    baigiai += "=> Tìm được: "+R+"\n";
+                    baigiai += "=> Tìm được: "+R+" (Ω)\n";
                     break;
                 case "H020":
                     baigiai += "Áp dụng công thức: R = A/((I^2).t)\n";
                     R = A/((Math.pow(I, 2))*t);
-                    System.out.println("=> Tìm được: "+R+"\n");
+                    System.out.println("=> Tìm được: "+R+" (Ω)\n");
                     break;
                 case "H021":
                     baigiai += "Áp dụng công thức: R = ((U^2).t)/A\n";
                     R = ((Math.pow(U, 2))*t)/A;
-                    System.out.println("=> Tìm được: "+R+"\n");
+                    System.out.println("=> Tìm được: "+R+" (Ω)\n");
                     break;  
                 case "H022":
                     baigiai += "Áp dụng công thức: R = ((U^2).t)/Q\n";
                     R = ((Math.pow(U, 2))*t)/Q;
-                    System.out.println("=> Tìm được: "+R+"\n");
+                    System.out.println("=> Tìm được: "+R+" (Ω)\n");
                     break;
                 case "H023":
                     baigiai += "Áp dụng công thức: R = P/(I^2)\n";
                     R = P/(Math.pow(I, 2));
-                    System.out.println("=> Tìm được: "+R+"\n");
+                    System.out.println("=> Tìm được: "+R+" (Ω)\n");
                     break;
                 case "H024":
                     if(tc.equals("noitiep"))
                     {
                         baigiai += "Áp dụng công thức: R = R1+R2\n";
                         R = R1+R2;
-                        baigiai += "=> Tìm được: "+R+"\n";
+                        baigiai += "=> Tìm được: "+R+" (Ω)\n";
                         break;
                     }
                     else
                     {
                         baigiai += "Áp dụng công thức: R = (R1.R2)/(R1+R2)\n";
                         R = (R1*R2)/(R1+R2);
-                        baigiai += "=> Tìm được: "+R+"\n";
+                        baigiai += "=> Tìm được: "+R+" (Ω)\n";
                         break;
                     }
                 case "H025":
                     baigiai += "R1 = U1/I1\n";
                     R1 = U1/I1;
-                    baigiai += "=> Tìm được: "+R1+"\n";
+                    baigiai += "=> Tìm được: "+R1+" (Ω)\n";
                     break;
                 case "H026":
                     if(tc.equals("noitiep"))
                     {
                         baigiai += "Áp dụng công thức: R1 = R-R2\n";
                         R1 = R-R2;
-                        baigiai += "=> Tìm được: "+R1+"\n";
+                        baigiai += "=> Tìm được: "+R1+" (Ω)\n";
                         break;
                     }
                     else
                     {
                         baigiai += "Áp dụng công thức: R1 = (R2.R)/(R2-R)\n";
                         R1 = (R2*R)/(R2-R);
-                        baigiai += "=> Tìm được: "+R1+"\n";
+                        baigiai += "=> Tìm được: "+R1+" (Ω)\n";
                         break;
                     }
                 case "H027":
                     baigiai += "R2 = U2/I2\n";
                     R2 = U2/I2;
-                    baigiai += "=> Tìm được: "+R2+"\n";
+                    baigiai += "=> Tìm được: "+R2+" (Ω)\n";
                     break;
                 case "H028":
                     if(tc.equals("noitiep"))
                     {
                         baigiai += "Áp dụng công thức: R2 = R-R1\n";
                         R2 = R-R1;
-                        baigiai += "=> Tìm được: "+R1+"\n";
+                        baigiai += "=> Tìm được: "+R1+" (Ω)\n";
                         break;
                     }
                     else
                     {
                         baigiai += "Áp dụng công thức: R2 = (R1.R)/(R1-R)\n";
                         R2 = (R1*R)/(R1-R);
-                        baigiai += "=> Tìm được: "+R2+"\n";
+                        baigiai += "=> Tìm được: "+R2+" (Ω)\n";
                         break;
                     }
                 case "H029":
                     baigiai += "Áp dụng công thức: A = U.q\n";
                     A = U*q;
-                    System.out.println("=> Tìm được: "+A+"\n");
+                    System.out.println("=> Tìm được: "+A+" (J)\n");
                     break;
                 case "H030":
                     baigiai += "Áp dụng công thức: A = U.I.t\n";
                     A = U*I*t;
-                    System.out.println("=> Tìm được: "+A+"\n");
+                    System.out.println("=> Tìm được: "+A+" (J)\n");
                     break;
                 case "H031":
                     baigiai += "Áp dụng công thức: A = P.t\n";
                     A = P*t;
-                    System.out.println("=> Tìm được: "+A+"\n");
+                    System.out.println("=> Tìm được: "+A+" (J)\n");
                     break;
                 case "H032":
                     baigiai += "Áp dụng công thức: A = ((U^2).t)/R\n";
                     A = ((Math.pow(U, 2))*t)/R;
-                    System.out.println("=> Tìm được: "+A+"\n");
+                    System.out.println("=> Tìm được: "+A+" (J)\n");
                     break;
                 case "H033":
                     baigiai += "Áp dụng công thức: P = A/t\n";
                     P = A/t;
-                    System.out.println("=> Tìm được: "+P+"\n");
+                    System.out.println("=> Tìm được: "+P+" (W)\n");
                     break;
                 case "H034":
                     baigiai += "Áp dụng công thức: P = U.I\n";
                     P = U*I;
-                    System.out.println("=> Tìm được: "+P+"\n");
+                    System.out.println("=> Tìm được: "+P+" (W)\n");
                     break;
                 case "H035":
                     baigiai += "Áp dụng công thức: P = Q/t\n";
                     P = Q/t;
-                    System.out.println("=> Tìm được: "+P+"\n");
+                    System.out.println("=> Tìm được: "+P+" (W)\n");
                     break;
                 case "H036":
                     baigiai += "Áp dụng công thức: P = R.(I^2)\n";
                     P = R*(Math.pow(I, 2));
-                    System.out.println("=> Tìm được: "+P+"\n");
+                    System.out.println("=> Tìm được: "+P+" (W)\n");
                     break; 
                 case "H037":
                     baigiai += "Áp dụng công thức: Q = R.I.t\n";
                     Q = R*I*t;
-                    System.out.println("=> Tìm được: "+Q+"\n");
+                    System.out.println("=> Tìm được: "+Q+" (J)\n");
                     break;
                 case "H038":
                     baigiai += "Áp dụng công thức: Q = ((U^2).t)/R\n";
                     Q = ((Math.pow(U, 2))*t)/R;
-                    System.out.println("=> Tìm được: "+Q+"\n");
+                    System.out.println("=> Tìm được: "+Q+" (J)\n");
                     break;
                 case "H039":
                     baigiai += "Áp dụng công thức: Q = P.t\n";
                     Q = P*t;
-                    System.out.println("=> Tìm được: "+Q+"\n");
+                    System.out.println("=> Tìm được: "+Q+" (J)\n");
                     break;
                 case "H040":
                     baigiai += "Áp dụng công thức: q = I.t\n";
                     q = I*t;
-                    System.out.println("=> Tìm được: "+q+"\n");
+                    System.out.println("=> Tìm được: "+q+" (C)\n");
                     break;
             }
         } 

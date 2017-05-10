@@ -89,7 +89,7 @@ public class TinhToan_BaDienTro {
             }
         }
     }
-    public String In_CongThuc(Vector giathiet, Vector giatri, String tc)
+    public String In_CongThuc(Vector giathiet, String tc)
     {
         String baigiai = "";
         for(int i = 0; i < giathiet.size(); i++)

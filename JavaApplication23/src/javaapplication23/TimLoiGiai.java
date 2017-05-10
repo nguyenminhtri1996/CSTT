@@ -19,6 +19,7 @@ import static javafx.application.Platform.exit;
  */
 public class TimLoiGiai {
    private static Vector loigiai = new Vector();
+   private static int kiemtra_timduoc;
    public TimLoiGiai(){} // construction
    
    public static boolean kiemtra_chuoicon(String cha, String con)
@@ -63,6 +64,7 @@ public class TimLoiGiai {
    {
        String chuoi_giathiet = "";
        String chuoi_ketluan = "";
+       
        for(int i = 0; i < giathiet.size(); i++)
        {
            chuoi_giathiet += (String) giathiet.get(i)+" ";
@@ -74,13 +76,19 @@ public class TimLoiGiai {
                ketluan.remove(i);
            }
        }
+       String chuoi_gt = chuoi_giathiet;
+       
+       
+       
        if(!ketluan.isEmpty())
        {
            for(int i = 0; i < ketluan.size(); i++)
            {
                chuoi_ketluan += (String) ketluan.get(i)+" ";
            }
+           String chuoi_kl = chuoi_ketluan;
            ResultSet rs = KetNoi.Connect(loaimach);
+           int flag_timduoc = 0; // Cờ kiểm tra xem bài toán có giải được không
            while(rs.next())
            {
                
@@ -89,21 +97,66 @@ public class TimLoiGiai {
                String kl = rs.getString("ketluan"); // kết luận trong CSTT
                if(kiemtra_chuoicon(chuoi_giathiet, gt) == true) // Kiểm tra xem giả thiết trong CSTT có thuộc giả thiết đề bài cho
                {
-                   chuoi_giathiet += kl+" ";
-                   //
-                   System.out.println(chuoi_giathiet);
-                   //
+                   chuoi_giathiet += kl+" ";                   
                    loigiai.add(ma);
                    if(kiemtra_chuoicon(chuoi_giathiet, chuoi_ketluan) == true)
                    {
+                       flag_timduoc = 1; // Cờ xác định bài toán giải được
                        break;
                    }
                }
                
            }  
+           kiemtra_timduoc = flag_timduoc;
+           if(kiemtra_timduoc == 1)
+           {
+               // Rút gọn lời giải/////////////////////////////////
+               // Đã nhận được Vector loigiai chứa các lời giải của bài toán nhưng chưa được rút gọn 
+               for(int i = 0; i < loigiai.size(); i++)
+               {
+                   int lc = i;
+                   int flag2 = 0;
+                   String loigiai_loaibo = (String)loigiai.get(lc);
+                   loigiai.remove(lc);
+                   for(int j = 0; j < loigiai.size(); j++)
+                   {   
+                       int flag1 = 0;
+                       ResultSet _rs = KetNoi_RutGon.Connect(loaimach, (String) loigiai.get(j));
+                       while(_rs.next())
+                       {
+
+//                            String ma = rs.getString("ma");
+                            String gt = rs.getString("giathiet"); // giả thiết trong CSTT
+                            String kl = rs.getString("ketluan"); // kết luận trong CSTT
+                            if(kiemtra_chuoicon(chuoi_gt, gt) == true) // Kiểm tra xem giả thiết trong CSTT có thuộc giả thiết đề bài cho
+                            {
+                                chuoi_gt += kl+" ";                   
+                                
+                                if(kiemtra_chuoicon(chuoi_gt, chuoi_kl) == true)
+                                {   
+                                    flag1 = 1;
+                                    break;                                    
+                                }
+                            }
+                       } 
+                       
+                       if(flag1 == 1)
+                       {
+                           flag2 = 1;
+                           break;
+                       }
+                   }
+                   if(flag2 == 0)
+                   {
+                       loigiai.add(lc, loigiai_loaibo);
+                   }
+               }
+           }
+             
        }
        
-       // Rút gọn lời giải/////////////////////////////////
+       
+       
        
        
    }
@@ -111,8 +164,13 @@ public class TimLoiGiai {
    {
        return loigiai;
    }
+   public static int KiemTra_TimDuoc()
+   {
+       return kiemtra_timduoc;
+   }
    public static void main(String args[]) throws SQLException
    {   
+       
        
        
    }
