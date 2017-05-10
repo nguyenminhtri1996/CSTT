@@ -8,6 +8,7 @@ package javaapplication23;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
@@ -22,7 +23,7 @@ public class KetNoi {
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/congty","root","haohao0501");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/vatlymotchieu","root","haohao0501");
             stmt = conn.createStatement();
             
         }catch(Exception e)
@@ -39,5 +40,4 @@ public class KetNoi {
         }
         return _rs;
     }
-    
 }
