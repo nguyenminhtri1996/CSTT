@@ -27,7 +27,7 @@ public class In_HinhMach {
             icon=new ImageIcon(img);
             
         } catch (IOException ex) {
-            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GiaoDien.class.getName()).log(Level.SEVERE, null, ex);
         }
         return icon;
     }
