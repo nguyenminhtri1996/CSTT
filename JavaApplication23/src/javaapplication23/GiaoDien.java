@@ -188,6 +188,7 @@ public class GiaoDien extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtDe.setText("");
         txtBaiLam.setText("");
+        
     }//GEN-LAST:event_jButton2MouseClicked
 
     /**
