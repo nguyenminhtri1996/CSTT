@@ -12,21 +12,38 @@ import java.util.Vector;
  * @author Minh Tri
  */
 public class PhanTichDe {
-    public static Vector GiaThiet(String de_giathiet)
+    private static Vector giathiet = new Vector();
+    private static Vector ketluan = new Vector();
+    private static Vector giatri = new Vector();
+    private static String loaimach;
+    private static String tinhchat;
+    public static void GiaThiet(String de)
     {
-        Vector giathiet = new Vector();
+        
+        
+        
+    }
+    public static Vector Lay_GiaThiet()
+    {
         return giathiet;
     }
-    public static Vector GiaTri(String de_giatri)
+    public static Vector Lay_KetLuan()
     {
-        Vector giatri = new Vector();
-        return giatri;
-    }
-    public static Vector KetLuan(String de_ketluan)
-    {
-        Vector ketluan = new Vector();
         return ketluan;
     }
+    public static Vector Lay_GiaTri()
+    {
+        return giatri;
+    }
+    public static String Lay_LoaiMach()
+    {
+        return loaimach;
+    }
+    public static String Lay_TinhChat()
+    {
+        return tinhchat;
+    }
+    
 //    public static String LoaiMach()
 //    {
 //        

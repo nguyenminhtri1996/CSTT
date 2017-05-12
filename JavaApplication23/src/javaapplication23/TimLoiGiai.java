@@ -19,7 +19,7 @@ import static javafx.application.Platform.exit;
  */
 public class TimLoiGiai {
    private static Vector loigiai = new Vector();
-   private static int kiemtra_timduoc;
+   private static int kiemtra_timduoc; // Từ giả thiết đề cho có tìm được kết luận hay không
    public TimLoiGiai(){} // construction
    
    public static boolean kiemtra_chuoicon(String cha, String con)

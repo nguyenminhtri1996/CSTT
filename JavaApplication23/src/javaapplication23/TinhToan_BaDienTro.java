@@ -89,12 +89,12 @@ public class TinhToan_BaDienTro {
             }
         }
     }
-    public String In_CongThuc(Vector giathiet, String tc)
+    public static String In_CongThuc(Vector loigiai, String tc)
     {
         String baigiai = "";
-        for(int i = 0; i < giathiet.size(); i++)
+        for(int i = 0; i < loigiai.size(); i++)
         {
-            switch((String)giathiet.get(i))
+            switch((String)loigiai.get(i))
             {
                 case "B001":
                     if(tc.equals("banoitiep"))
@@ -131,6 +131,24 @@ public class TinhToan_BaDienTro {
                             I = I2;
                         else
                             I = I1+I3;
+                        baigiai += "=> Tìm được: "+I+" (A)\n";
+                    }
+                    else if(tc.equals("mothainoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: I=(I1=I2)+I3\n";
+                        if(I1 != 0)
+                            I = I1+I3;
+                        else
+                            I = I2+I3;
+                        baigiai += "=> Tìm được: "+I+" (A)\n";
+                    }
+                    else if(tc.equals("motbanoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: I=(I1=I3)+I2\n";
+                        if(I1 != 0)
+                            I = I1+I2;
+                        else
+                            I = I2+I3;
                         baigiai += "=> Tìm được: "+I+" (A)\n";
                     }
                     else
@@ -204,6 +222,24 @@ public class TinhToan_BaDienTro {
                             I1=I2-I3;
                         baigiai += "=> Tìm được: "+I1+" (A)\n";
                     }
+                    else if(tc.equals("mothainoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: I1=I2=I-I3\n";
+                        if(I2!=0)
+                            I1=I2;
+                        else
+                            I1 = I-I3;                       
+                        baigiai += "=> Tìm được: "+I1+" (A)\n";
+                    }
+                    else if(tc.equals("motbanoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: I1=I3=I-I2\n";
+                        if(I3!=0)
+                            I1=I3;
+                        else
+                            I1 = I-I2;
+                        baigiai += "=> Tìm được: "+I1+" (A)\n";
+                    }
                     else
                     {
                         baigiai += "Áp dụng công thức: I1=I-I2=I3-I2\n";
@@ -248,11 +284,26 @@ public class TinhToan_BaDienTro {
                     }
                     else if(tc.equals("hai"))
                     {
-                        baigiai += "Áp dụng công thức: I2=I=I1+I3\n";
-                        if(I!=0)
-                            I2=I;
+                        baigiai += "Áp dụng công thức: I2=I1=I-I3\n";
+                        I2=I-I3;
+                        baigiai += "=> Tìm được: "+I2+" (A)\n";
+                    }
+                    else if(tc.equals("mothainoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: I2=I1=I-I3\n";
+                        if(I1!=0)
+                            I2=I1;
                         else
-                            I2=I1+I3;
+                            I2=I-I3;
+                        baigiai += "=> Tìm được: "+I2+" (A)\n";
+                    }
+                    else if(tc.equals("motbanoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: I2=I-(I1=I3)\n";
+                        if(I1!=0)
+                            I2=I-I1;
+                        else
+                            I2=I-I3;
                         baigiai += "=> Tìm được: "+I2+" (A)\n";
                     }
                     else
@@ -306,6 +357,24 @@ public class TinhToan_BaDienTro {
                             I3=I2-I1;
                         baigiai += "=> Tìm được: "+I3+" (A)\n";
                     }
+                    else if(tc.equals("mothainoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: I3=I-(I1=I2)\n";
+                        if(I1!=0)
+                            I3=I-I1;
+                        else
+                            I3=I-I2;
+                        baigiai += "=> Tìm được: "+I3+" (A)\n";
+                    }
+                    else if(tc.equals("motbanoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: I3=I1=I-I2\n";
+                        if(I1!=0)
+                            I3=I1;
+                        else
+                            I3=I-I2;
+                        baigiai += "=> Tìm được: "+I3+" (A)\n";
+                    }
                     else
                     {
                         baigiai += "Áp dụng công thức: I3=I=(I1+I2)\n";
@@ -350,6 +419,24 @@ public class TinhToan_BaDienTro {
                             U=U2+U1;
                         else
                             I3=U2+U3;
+                        baigiai += "=> Tìm được: "+U+" (V)\n";
+                    }
+                    else if(tc.equals("mothainoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: U=U3=U1+U2\n";
+                        if(U3!=0)
+                            U=U3;
+                        else
+                            U=U1+U2;
+                        baigiai += "=> Tìm được: "+U+" (V)\n";
+                    }
+                    else if(tc.equals("motbanoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: U=U2=U1+U3\n";
+                        if(U2!=0)
+                            U=U2;
+                        else
+                            U=U1+U3;
                         baigiai += "=> Tìm được: "+U+" (V)\n";
                     }
                     else
@@ -420,6 +507,15 @@ public class TinhToan_BaDienTro {
                         U1=U-U2;
                         baigiai += "=> Tìm được: "+U1+" (V)\n";
                     }
+                    else if(tc.equals("mothainoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: U1=U-U2=U3-U2\n";
+                        if(U3!=0)
+                            U1=U3-U2;
+                        else
+                            U1=U-U2;
+                        baigiai += "=> Tìm được: "+U1+" (V)\n";
+                    }
                     else
                     {
                         baigiai += "Áp dụng công thức: U1=U-U3\n";
@@ -465,6 +561,15 @@ public class TinhToan_BaDienTro {
                             U2=U-U3;
                         baigiai += "=> Tìm được: "+U2+" (V)\n";
                     }
+                    else if(tc.equals("mothainoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: U2=U-U1=U3-U1\n";
+                        if(U3!=0)
+                            U2=U3-U1;
+                        else
+                            U2=U-U1;
+                        baigiai += "=> Tìm được: "+U2+" (V)\n";
+                    }
                     else
                     {
                         baigiai += "Áp dụng công thức: U2=U-U3\n";
@@ -507,6 +612,15 @@ public class TinhToan_BaDienTro {
                         U3=U-U2;
                         baigiai += "=> Tìm được: "+U3+" (V)\n";
                     }
+                    else if(tc.equals("mothainoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: U3=U=U1+U2\n";
+                        if(U!=0)
+                            U3=U;
+                        else
+                            U3=U1+U2;
+                        baigiai += "=> Tìm được: "+U3+" (V)\n";
+                    }
                     else
                     {
                         baigiai += "Áp dụng công thức: U3=U-(U1=U2)\n";
@@ -540,6 +654,12 @@ public class TinhToan_BaDienTro {
                     {
                         baigiai += "Áp dụng công thức: R=R2+((R1*R3)/(R1+R3))\n";
                         R=R2+((R1*R3)/(R1+R3));
+                        baigiai += "=> Tìm được: "+R+" (Ω)\n";
+                    }
+                    else if(tc.equals("mothainoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: R=R3.(R1+R2)/(R1+R2+R3)\n";
+                        R=R3*(R1+R2)/(R1+R2+R3);
                         baigiai += "=> Tìm được: "+R+" (Ω)\n";
                     }
                     else
@@ -603,6 +723,12 @@ public class TinhToan_BaDienTro {
                         R1=1/(1/(R-R2)-1/R3);
                         baigiai += "=> Tìm được: "+R1+" (Ω)\n";
                     }
+                    else if(tc.equals("mothainoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: R1=(R.R3/(R3-R))-R2\n";
+                        R1=(R*R3/(R3-R))-R2;
+                        baigiai += "=> Tìm được: "+R1+" (Ω)\n";
+                    }
                     else
                     {
                         baigiai += "Áp dụng công thức: R1 = R2.(R-R3)/(R2-R+R3)\n";
@@ -641,6 +767,12 @@ public class TinhToan_BaDienTro {
                         R2=R-(R1*R3)/(R1+R3);
                         baigiai += "=> Tìm được: "+R2+" (Ω)\n";
                     }
+                    else if(tc.equals("mothainoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: R2=(R.R3/(R3-R))-R1\n";
+                        R2=(R*R3/(R3-R))-R1;
+                        baigiai += "=> Tìm được: "+R2+" (Ω)\n";
+                    }
                     else
                     {
                         baigiai += "Áp dụng công thức: R2=R1.(R-R3)/(R1-R+R3)\n";
@@ -677,6 +809,12 @@ public class TinhToan_BaDienTro {
                         
                         baigiai += "Áp dụng công thức: R3=R1.(R-R2)/(R1-R+R2)\n";
                         R3=1/(1/(R-R2)-1/R1);
+                        baigiai += "=> Tìm được: "+R3+" (Ω)\n";
+                    }
+                    else if(tc.equals("mothainoitiep"))
+                    {
+                        baigiai += "Áp dụng công thức: R3=R.(R1+R2)/(R1+R2-R)\n";
+                        R3=R*(R1+R2)/(R1+R2-R);
                         baigiai += "=> Tìm được: "+R3+" (Ω)\n";
                     }
                     else

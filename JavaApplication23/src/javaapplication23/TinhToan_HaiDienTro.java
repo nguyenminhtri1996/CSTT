@@ -79,12 +79,12 @@ public class TinhToan_HaiDienTro {
         }
     }
   
-    public String In_CongThuc(Vector giathiet, String tc)
+    public static String In_CongThuc(Vector loigiai, String tc)
     {
         String baigiai = "";
-        for(int i = 0; i < giathiet.size(); i++)
+        for(int i = 0; i < loigiai.size(); i++)
         {
-            switch((String)giathiet.get(i))
+            switch((String)loigiai.get(i))
             {
                 case "H001":
                     if(tc.equals("noitiep"))

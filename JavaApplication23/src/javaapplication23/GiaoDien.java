@@ -5,6 +5,12 @@
  */
 package javaapplication23;
 
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Minh Tri
@@ -67,6 +73,7 @@ public class GiaoDien extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setText("BÀI LÀM");
 
+        txtBaiLam.setEditable(false);
         txtBaiLam.setColumns(20);
         txtBaiLam.setRows(5);
         jScrollPane2.setViewportView(txtBaiLam);
@@ -85,13 +92,14 @@ public class GiaoDien extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("ĐỀ BÀI");
 
+        jButton2.setBackground(new java.awt.Color(255, 0, 0));
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton2.setText("XÓA");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -114,6 +122,7 @@ public class GiaoDien extends javax.swing.JFrame {
             .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
         );
 
+        btnGiai.setBackground(new java.awt.Color(0, 255, 0));
         btnGiai.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnGiai.setText("GIẢI");
         btnGiai.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,8 +157,8 @@ public class GiaoDien extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(jLbHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addComponent(jLbHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -174,21 +183,64 @@ public class GiaoDien extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGiaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGiaiMouseClicked
-        // TODO add your handling code here:
-        
-        //In Hình
-        jLbHinh.setIcon(In_HinhMach.In("1R"));
+        try {
+            // TODO add your handling code here:
+            
+            //In Hình
+//        jLbHinh.setIcon(In_HinhMach.In("1R"));
+            Vector giathiet = new Vector();
+            Vector ketluan = new Vector();
+            Vector giatri = new Vector();
+            Vector loigiai = new Vector();
+            String loaimach; // motdientro or haidientro or badientro
+            String tinhchat;
+            int kiemtra_tinh_giaiduoc;
+            giathiet = PhanTichDe.Lay_GiaThiet();
+            ketluan = PhanTichDe.Lay_KetLuan();
+            giatri = PhanTichDe.Lay_GiaTri();
+            loaimach = PhanTichDe.Lay_LoaiMach();
+            tinhchat = PhanTichDe.Lay_TinhChat();
+            TimLoiGiai.ThucHien(giathiet, ketluan, loaimach);
+            kiemtra_tinh_giaiduoc = TimLoiGiai.KiemTra_TimDuoc();
+            if(kiemtra_tinh_giaiduoc == 0)
+            {
+                // Xuất hộp thoại thông báo thiếu giả thiết
+                JOptionPane.showMessageDialog (null, 
+                               "Nhập thiếu giả thiết", 
+                               "Chú ý", 
+                               JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                // Thực hiện tính toán
+                if(loaimach.equals("motdientro"))
+                {
+                    TinhToan_MotDienTro.Gan_GiaTri(giathiet, giatri);
+                    txtBaiLam.setText(TinhToan_MotDienTro.In_CongThuc(loigiai));
+                }
+                else if(loaimach.equals("haidientro"))
+                {
+                    TinhToan_HaiDienTro.Gan_GiaTri(giathiet, giatri);
+                    txtBaiLam.setText(TinhToan_HaiDienTro.In_CongThuc(loigiai, tinhchat));
+                }
+                else
+                {
+                    TinhToan_BaDienTro.Gan_GiaTri(giathiet, giatri);
+                    txtBaiLam.setText(TinhToan_BaDienTro.In_CongThuc(loigiai, tinhchat));
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GiaoDien.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_btnGiaiMouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        txtDe.setText("");
-        txtBaiLam.setText("");
-        
     }//GEN-LAST:event_jButton2MouseClicked
 
     /**
