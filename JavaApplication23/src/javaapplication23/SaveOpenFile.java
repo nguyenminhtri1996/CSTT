@@ -5,9 +5,12 @@
  */
 package javaapplication23;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import javax.swing.JFileChooser;
 
 /**
@@ -41,9 +44,43 @@ public class SaveOpenFile {
             writer.close();                     
         }
     }
-    public static void ThucHien_Mo()
+    public static String ThucHien_Mo() throws IOException
     {
-        
+        JFileChooser c = new JFileChooser();
+        int rVal = c.showOpenDialog(null);
+        String kq = "";
+        if (rVal == JFileChooser.APPROVE_OPTION) 
+        {
+            String filename = c.getSelectedFile().getName();
+            String dir = c.getCurrentDirectory().toString();
+            
+            File file = new File(dir+"\\"+filename+".txt");
+            file.createNewFile();
+            FileInputStream fis = new FileInputStream(file);
+            BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+            String line;
+            
+            while ((line = br.readLine()) != null) {
+                kq += line+"\n";
+            }               
+        }
+        return kq;
     }
-    
+//    public static void main(String agrs[])
+//    {
+//        try {
+//            String input = "vd.txt";
+//            FileInputStream fis = new FileInputStream(new File(input));
+//            BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+//            String line;
+//            String kq = "";
+//            while ((line = br.readLine()) != null) {
+//                kq += line+"\n";
+//            }
+//            System.out.print(kq);
+//            br.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
