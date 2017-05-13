@@ -15,6 +15,7 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -338,7 +339,12 @@ public class GiaoDien extends javax.swing.JFrame {
 
     private void btnMoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMoMouseClicked
         // TODO add your handling code here:
-        new XuatFile().setVisible(true);
+        String title = "";
+        JFrame t = new XuatFile();
+        //new XuatFile().setVisible(true);
+        t.setVisible(true);
+        t.setTitle(title);
+        
     }//GEN-LAST:event_btnMoMouseClicked
 
     /**
