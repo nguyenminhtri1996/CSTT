@@ -26,6 +26,11 @@ public class GiaoDien extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    
+    private static String giathiet = "";
+    private static String bailam = ""; 
+    
+    
     public GiaoDien() {
         initComponents();
     }
@@ -246,17 +251,20 @@ public class GiaoDien extends javax.swing.JFrame {
                 if(loaimach.equals("motdientro"))
                 {
                     TinhToan_MotDienTro.Gan_GiaTri(giathiet, giatri);
-                    txtBaiLam.setText(TinhToan_MotDienTro.In_CongThuc(loigiai));
+                    bailam = TinhToan_MotDienTro.In_CongThuc(loigiai);
+                    txtBaiLam.setText(bailam);
                 }
                 else if(loaimach.equals("haidientro"))
                 {
                     TinhToan_HaiDienTro.Gan_GiaTri(giathiet, giatri);
-                    txtBaiLam.setText(TinhToan_HaiDienTro.In_CongThuc(loigiai, tinhchat));
+                    bailam = TinhToan_HaiDienTro.In_CongThuc(loigiai, tinhchat);
+                    txtBaiLam.setText(bailam);
                 }
                 else
                 {
                     TinhToan_BaDienTro.Gan_GiaTri(giathiet, giatri);
-                    txtBaiLam.setText(TinhToan_BaDienTro.In_CongThuc(loigiai, tinhchat));
+                    bailam = TinhToan_BaDienTro.In_CongThuc(loigiai, tinhchat);
+                    txtBaiLam.setText(bailam);
                 }
             }
         } catch (SQLException ex) {
@@ -275,6 +283,44 @@ public class GiaoDien extends javax.swing.JFrame {
 
     private void btnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuuMouseClicked
         // TODO add your handling code here:
+        giathiet = txtDe.getText();
+        if(giathiet.equals("") || bailam.equals(""))
+        {
+            JOptionPane.showMessageDialog (null, 
+                               "Đề bài hoặc bài làm bị trống", 
+                               "Chú ý", 
+                               JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            JFileChooser c = new JFileChooser();
+            int rVal = c.showSaveDialog(null);
+            if (rVal == JFileChooser.APPROVE_OPTION) 
+            {
+                String filename = c.getSelectedFile().getName();
+                String dir = c.getCurrentDirectory().toString();
+
+                File file = new File(dir+"\\"+filename+".txt");
+                try {
+                    file.createNewFile();
+                } catch (IOException ex) {
+                    Logger.getLogger(GiaoDien.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                FileWriter writer; 
+                try {
+                    writer = new FileWriter(file);
+                    writer.write("ĐỀ BÀI: \n");
+                    writer.write(giathiet+"\n");
+                    writer.write("BÀI LÀM: \n");
+                    writer.write(bailam+"\n");
+                    writer.flush();
+                    writer.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(GiaoDien.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
     }//GEN-LAST:event_btnLuuMouseClicked
 
     /**
